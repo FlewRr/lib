@@ -1,27 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hello_world)
+set(SOURCE_LIB vector.cpp)
 
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address  -fsanitize=leak -g")
- 
-include_directories(vector)
-add_subdirectory(vector)
-
-# set(WITH_TESTS "ON")
-
-# if(${WITH_TESTS} STREQUAL "ON")
-#   add_subdirectory(tests)
-#   include(FetchContent)
-#   FetchContent_Declare(
-#     googletest
-#     URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-#   )
-#   # For Windows: Prevent overriding the parent project's compiler/linker settings
-#   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-#   FetchContent_MakeAvailable(googletest)
-
-#   enable_testing()
-
-# endif()
+add_library(vector vector.cpp include/vector.h)
+target_include_directories(vector PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+install(TARGETS vector)

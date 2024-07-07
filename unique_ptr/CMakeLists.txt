@@ -1,25 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fsanitize=address  -fsanitize=leak -g")
+set(SOURCE_LIB unqiue_ptr.cpp)
 
-include_directories(unique_ptr)
-add_subdirectory(unique_ptr)
-
-# set(WITH_TESTS "ON")
-
-# if(${WITH_TESTS} STREQUAL "ON")
-#   add_subdirectory(tests)
-#   include(FetchContent)
-#   FetchContent_Declare(
-#     googletest
-#     URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-#   )
-#   # For Windows: Prevent overriding the parent project's compiler/linker settings
-#   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-#   FetchContent_MakeAvailable(googletest)
-
-#   enable_testing()
-
-# endif()
+add_library(unique_ptr unique_ptr.cpp include/unique_ptr.h)
+target_include_directories(unique_ptr PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+install(TARGETS unique_ptr)
