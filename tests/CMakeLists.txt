@@ -1,12 +1,21 @@
+add_subdirectory(
+	tests
+)
+
+include_directories(
+    tests
+)
+
 add_executable(
     hello_test
-    tests.cpp
+    main.cpp
   )
 
 target_link_libraries(
     hello_test
     GTest::gtest_main
     vector
+    unique_ptr
   )
 
 include(GoogleTest)

@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
-#include "include/unique_ptr.h"
-#include <iostream>
+#include "unique_ptr.h"
 
-// TODO: T[]
 class UPTest: public ::testing::Test {
 protected:
     virtual void SetUp() {
@@ -15,6 +13,7 @@ protected:
     }
 
     struct X {};
+
     template<typename T>
     struct D // deleter
     {

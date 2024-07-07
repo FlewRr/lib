@@ -1,17 +1,24 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(hello_world)
-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address  -fsanitize=leak -g")
- 
-include_directories(vector)
+set(CMAKE_WITH_TESTS "ON")
+set(CMAKE_BUILD_TYPE "Debug")
+# set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -fsanitize=address  -fsanitize=leak -g")
+
+if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+  set(
+    CMAKE_CXX_FLAGS
+    "${CMAKE_CXX_FLAGS} -Werror -fsanitize=leak -fsanitize=address"
+  )  
+endif()
+
+
 add_subdirectory(vector)
+add_subdirectory(unique_ptr)
 
-set(WITH_TESTS "ON")
 
-if(${WITH_TESTS} STREQUAL "ON")
+if(${CMAKE_WITH_TESTS} MATCHES "ON")
   add_subdirectory(tests)
   include(FetchContent)
   FetchContent_Declare(

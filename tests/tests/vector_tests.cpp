@@ -151,11 +151,5 @@ template<> Vector<char> VectorTest<char>::vec(b, 3);
 template<> Vector<float> VectorTest<float>::vec(c, 3);
 template<> Vector<long long> VectorTest<long long>::vec(d, 3);
 
-
 }
 
-
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
