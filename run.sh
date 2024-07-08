@@ -4,4 +4,4 @@ cmake -S . -B build/
 cd build/
 make
 cd tests/
-./hello_test
+./tests_cpp

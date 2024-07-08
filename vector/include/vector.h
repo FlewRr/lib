@@ -45,7 +45,7 @@ public:
         arr = std::move(other.arr);
 
         other.size_ = 0;
-        other.capacity = 1;
+        other.capacity = 0;
         other.arr = nullptr;
     }
 

@@ -26,7 +26,6 @@ protected:
             delete p;
         };
     };
-    // int a[3] = {1, 2, 3};
     
     Unique_ptr<int> ptr1;
     Unique_ptr<int> ptr2;

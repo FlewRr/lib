@@ -3,20 +3,20 @@ add_subdirectory(
 )
 
 include_directories(
-    tests
+	tests
 )
 
 add_executable(
-    hello_test
+    tests_cpp
     main.cpp
   )
 
 target_link_libraries(
-    hello_test
+    tests_cpp
     GTest::gtest_main
     vector
     unique_ptr
   )
 
 include(GoogleTest)
-gtest_discover_tests(hello_test)
+gtest_discover_tests(tests_cpp)
