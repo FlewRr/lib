@@ -70,8 +70,10 @@ public:
     }
 
     void reset(){
-        if (use_count == nullptr)
+        if (use_count == nullptr || data == nullptr){
+            delete use_count;
             return;
+        }
             
         --*use_count;
 
@@ -83,6 +85,7 @@ public:
     }
 
     void reset(T* ptr){ 
+        if (use_count)
         deleter(data);
         delete use_count;
 

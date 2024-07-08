@@ -56,6 +56,11 @@ namespace Tests{
         EXPECT_TRUE(ptr4.count() == 1);
     }
 
+    TEST_F(SPTest, EmptyReset){
+        Shared_ptr<int> x;
+        x.reset();
+    }
+
     TEST_F(SPTest, Reset){
         Shared_ptr<int> to_be_reseted(new int(1));
         Shared_ptr<int> to_be_reseted2(new int(1));
