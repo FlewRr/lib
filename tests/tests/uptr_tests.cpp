@@ -44,7 +44,7 @@ TEST_F(UPTest, Get){
     EXPECT_TRUE(*ptr1.get() == 1);
 }
 
-TEST_F(UPTest, Move){
+TEST_F(UPTest, MoveAssignment){
     Unique_ptr<int> moved_ptr = std::move(ptr1);
 
     EXPECT_TRUE(*moved_ptr.get() == 1);

@@ -16,6 +16,7 @@ target_link_libraries(
     GTest::gtest_main
     vector
     unique_ptr
+    shared_ptr
   )
 
 include(GoogleTest)
