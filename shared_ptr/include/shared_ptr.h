@@ -8,10 +8,10 @@ template<class T, class Deleter=std::default_delete<T>> class Shared_ptr{
     size_t* use_count;
     Deleter deleter;
 public:
-    constexpr Shared_ptr() noexcept : data(nullptr), use_count(new size_t(0)) {
+    constexpr Shared_ptr() noexcept : data(nullptr), use_count(nullptr) {
     }
     
-    constexpr Shared_ptr(std::nullptr_t) noexcept : data(nullptr), use_count(new size_t(0)){
+    constexpr Shared_ptr(std::nullptr_t) noexcept : data(nullptr), use_count(nullptr){
     }
 
     explicit Shared_ptr(T* ptr): data(ptr), use_count(new size_t(1)){
@@ -85,14 +85,12 @@ public:
     }
 
     void reset(T* ptr){ 
-        if (use_count)
-        deleter(data);
-        delete use_count;
+        reset();
 
         data = ptr;
         use_count = new size_t(1);
-
     }
+
     size_t count() const{
         return *use_count;
     }

@@ -29,12 +29,28 @@ namespace Tests{
     Shared_ptr<int> ptr1(new int(1));
     Shared_ptr<int> ptr2(new int(2));
 
-    TEST_F(SPTest, Constructors){
-        Shared_ptr<int> ptr4(new int(3));
-        Shared_ptr<int> ptr5(ptr4);
+    TEST_F(SPTest, DefaultConstructor){
+        Shared_ptr<int> empty_ptr;
 
-        EXPECT_EQ(*ptr4 == 3, *ptr5 == 3);
-        EXPECT_EQ(ptr5.count() == 2, ptr4.count() == 2);
+        EXPECT_TRUE(empty_ptr.get() == nullptr);
+    }
+
+    TEST_F(SPTest, NullptrConstructor){
+        Shared_ptr<int> null_ptr(nullptr);
+
+        EXPECT_TRUE(null_ptr.get() == nullptr);
+    }
+    
+    TEST_F(SPTest, DefaultConstructor1){
+        Shared_ptr<int> ptr4(new int(3));
+
+        EXPECT_TRUE(*ptr4.get() == 3);
+    }
+
+    TEST_F(SPTest, CopyConstructor){
+        Shared_ptr<int> ptr5(ptr1);
+        
+        EXPECT_EQ(ptr5.count() == 2, ptr1.count() == 2);
     }
 
     TEST_F(SPTest, Get){
@@ -56,18 +72,22 @@ namespace Tests{
         EXPECT_TRUE(ptr4.count() == 1);
     }
 
-    TEST_F(SPTest, EmptyReset){
+    TEST_F(SPTest, EmptyObjectReset){
         Shared_ptr<int> x;
         x.reset();
     }
 
-    TEST_F(SPTest, Reset){
+    TEST_F(SPTest, EmptyReset){
         Shared_ptr<int> to_be_reseted(new int(1));
-        Shared_ptr<int> to_be_reseted2(new int(1));
         to_be_reseted.reset();
-        to_be_reseted2.reset(new int(5));
 
         EXPECT_TRUE(to_be_reseted.get() == nullptr);
+    }
+
+    TEST_F(SPTest, Reset){
+        Shared_ptr<int> to_be_reseted2(new int(1));
+        to_be_reseted2.reset(new int(5));
+
         EXPECT_TRUE(*to_be_reseted2.get() == 5);
     }
 

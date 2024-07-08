@@ -1,0 +1,1 @@
+/usr/bin/c++  -Werror -fsanitize=leak -fsanitize=address -g -g CMakeFiles/tests_cpp.dir/main.cpp.o -o tests_cpp  ../lib/libgtest_main.a ../vector/libvector.a ../unique_ptr/libunique_ptr.a ../shared_ptr/libshared_ptr.a ../lib/libgtest.a
