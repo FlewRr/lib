@@ -66,7 +66,7 @@ public:
             deleter(result);
 
         data = ptr;
-    }
+    }   
 };
 
 #endif

@@ -17,6 +17,7 @@ target_link_libraries(
     vector
     unique_ptr
     shared_ptr
+    animals
   )
 
 include(GoogleTest)
