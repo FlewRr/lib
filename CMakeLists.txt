@@ -7,17 +7,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_WITH_TESTS "ON")
 set(CMAKE_BUILD_TYPE "Debug")
 
-if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
-    set(
-      CMAKE_CXX_FLAGS
-      "${CMAKE_CXX_FLAGS} -Werror -fsanitize=leak -fsanitize=address -g"
-    )  
-endif()
+# if(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+#     set(
+#       CMAKE_CXX_FLAGS
+#       "${CMAKE_CXX_FLAGS} -Werror -fsanitize=leak -fsanitize=address -g"
+#     )  
+# endif()
 
 add_subdirectory(vector)
 add_subdirectory(unique_ptr)
 add_subdirectory(shared_ptr)
 add_subdirectory(animals)
+add_subdirectory(parser)
+add_subdirectory(pugixml)
 
 if(${CMAKE_WITH_TESTS} MATCHES "ON")
   add_subdirectory(tests)

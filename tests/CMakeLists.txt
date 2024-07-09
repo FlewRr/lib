@@ -18,6 +18,8 @@ target_link_libraries(
     unique_ptr
     shared_ptr
     animals
+    parser
+    pugixml
   )
 
 include(GoogleTest)

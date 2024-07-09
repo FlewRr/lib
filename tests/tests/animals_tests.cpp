@@ -46,4 +46,5 @@ TEST_F(AnimalsTest, CreateAnimalCat){
     std::unique_ptr<Animal> animal;
     ASSERT_NO_THROW(animal.reset(new Cat(5)));
 }
+
 }

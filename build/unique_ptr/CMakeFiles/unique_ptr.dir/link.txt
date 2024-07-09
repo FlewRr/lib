@@ -1,2 +1,0 @@
-/usr/bin/ar qc libunique_ptr.a CMakeFiles/unique_ptr.dir/unique_ptr.cpp.o
-/usr/bin/ranlib libunique_ptr.a
