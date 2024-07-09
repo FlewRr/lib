@@ -21,8 +21,11 @@ int* Animal::get_weight() const{
 }
 
 Cat::Cat(): Animal(1){
+    sound = new char[4]{'M', 'e', 'o', 'w'};
 }
-Cat::Cat(int weight): Animal(weight){}
+Cat::Cat(int weight): Animal(weight){
+    sound = new char[4]{'M', 'e', 'o', 'w'};
+}
 
 char* Cat::rargh() const{
     return sound;
@@ -41,8 +44,12 @@ Cat::~Cat(){
     delete[] sound;
 }
 
-Dog::Dog(): Animal(5){}
-Dog::Dog(int weight): Animal(weight){}
+Dog::Dog(): Animal(5){
+    sound = new char[4]{'B', 'a', 'r', 'k'};
+}
+Dog::Dog(int weight): Animal(weight){
+    sound = new char[4]{'B', 'a', 'r', 'k'};
+}
 
 char* Dog::rargh() const{
     return sound;

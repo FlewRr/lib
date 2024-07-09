@@ -16,7 +16,7 @@ public:
 
 
 class Cat: public Animal{
-    char* sound = new char[4]{'M', 'e', 'o', 'w'};
+    char* sound;
 public:
     Cat();
     Cat(int weight);
@@ -28,7 +28,7 @@ public:
 };
 
 class Dog: public Animal{
-    char* sound = new char[4]{'B', 'a', 'r', 'k'};
+    char* sound;
 public:
     Dog();
     Dog(int weight);
