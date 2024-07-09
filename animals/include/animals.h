@@ -3,49 +3,33 @@
 
 class Animal{
     char* sound;
-    int weight;
-    int type_multiplier;
+    int* weight;
+    double type_multiplier;
 public:
     Animal() = default;
-    
-    Animal(int weight): weight(weight){}
+    Animal(int* weight);
+    Animal(char* sound, int* weight, double type_multiplier);
 
-    Animal(char* sound, int weight, double type_multiplier=1): sound(sound), weight(weight), type_multiplier(type_multiplier){}
+    ~Animal();
 
-    ~Animal(){
-        delete[] sound;
-    }
+    char* rargh();
 
-    char* rargh(){
-        return sound;
-    }
-    float jump(){
-        float jump_height = weight * type_multiplier;
-        
-        return jump_height;
-    }
+    float jump();
 };
 
 
 class Cat: public Animal{
-    char* sound = new char[] {'M', 'e', 'o', 'w'};
+    char* sound = new char[]{'M', 'e', 'o', 'w'};
 public:
-    Cat(): Animal(sound, 1, 3){
-    }
-
-    Cat(int weight): Animal(sound, weight, 3){
-    }
-
+    Cat();
+    Cat(int* weight);
 };
 
 class Dog: public Animal{
-    char* sound = new char[] {'B', 'a', 'r', 'k'};
+    char* sound = new char[]{'B', 'a', 'r', 'k'};
 public:
-    Dog(): Animal(sound, 5){
-    }
-
-    Dog(int weight): Animal(sound, weight, 1.5){}
-
+    Dog();
+    Dog(int* weight);
 };
 
 #endif
