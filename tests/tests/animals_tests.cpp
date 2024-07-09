@@ -15,7 +15,8 @@ namespace Tests{
     Cat cat2(15);
     Dog dog1;
     Dog dog2(15);
-
+    Fabric fabric;
+    
 TEST_F(AnimalsTest, CatSound){
     EXPECT_EQ(cat1.rargh() == "Meow", cat2.rargh() == "Meow");
 }
@@ -30,5 +31,13 @@ TEST_F(AnimalsTest, DogSound){
 
 TEST_F(AnimalsTest, DogJump){
     EXPECT_EQ(dog1.jump() == 3, dog2.jump() == 15 * 1.5);
+}
+
+TEST_F(AnimalsTest, Fabric){
+    fabric.add_cat();
+    fabric.add_dog();
+    fabric.add_cat();
+    fabric.add_dog();
+    fabric.add_cat();
 }
 }
