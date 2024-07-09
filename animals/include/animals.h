@@ -10,7 +10,7 @@ public:
     Animal() = default;
     Animal(int weight);
 
-    ~Animal();
+    virtual ~Animal();
 
     virtual float jump() const;
 };
