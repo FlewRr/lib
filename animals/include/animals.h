@@ -2,41 +2,40 @@
 #define ANIMALS_INCLUDE_ANIMALS_H_20240907
 
 class Animal{
-    char* sound;
     int* weight;
 public:
     Animal() = default;
-    Animal(int* weight);
-    Animal(char* sound, int* weight);
+    Animal(int weight);
 
     ~Animal();
 
-    virtual char* rargh();
+    virtual float jump() const;
 
-    virtual float jump();
-
-    int* get_weight();
+    int* get_weight() const ;
 };
 
 
 class Cat: public Animal{
+    char* sound = new char[4]{'M', 'e', 'o', 'w'};
 public:
     Cat();
-    Cat(int* weight);
+    Cat(int weight);
+    ~Cat();
 
-    char* rargh();
+    char* rargh() const;
     
-    float jump();
+    float jump() const;
 };
 
 class Dog: public Animal{
+    char* sound = new char[4]{'B', 'a', 'r', 'k'};
 public:
     Dog();
-    Dog(int* weight);
+    Dog(int weight);
+    ~Dog();
+    char* rargh() const;
 
-    char* rargh();
-
-    float jump();
+    float jump() const;
 };
 
 #endif

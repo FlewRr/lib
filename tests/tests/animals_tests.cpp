@@ -12,9 +12,9 @@ protected:
 
 namespace Tests{
     Cat cat1;
-    Cat cat2(new int(15));
+    Cat cat2(15);
     Dog dog1;
-    Dog dog2(new int(15));
+    Dog dog2(15);
 
 TEST_F(AnimalsTest, CatSound){
     EXPECT_EQ(cat1.rargh() == "Meow", cat2.rargh() == "Meow");

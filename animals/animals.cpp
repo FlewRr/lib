@@ -1,40 +1,34 @@
 #include "animals.h"
 #include <cmath>
 
-Animal::Animal(int* weight_): weight(weight_){}
-Animal::Animal(char* sound_, int* weight_){
-    sound = sound_;
-    weight = weight_;
-}
+Animal::Animal(int weight_): weight(new int(weight_)){}
 
 Animal:: ~Animal(){
-        delete[] sound;
         delete weight;
     }
-char* Animal::rargh(){
-        return sound;
-    }
 
 
-float Animal::jump(){
+
+float Animal::jump() const{
     if (weight == nullptr)
         return 0;
 
     return (*weight) / 2;
     }
     
-int* Animal::get_weight(){
+int* Animal::get_weight() const{
     return weight;
 }
 
-Cat::Cat(): Animal(new char[4]{'M', 'e', 'o', 'w'}, new int(1)){}
-Cat::Cat(int* weight): Animal(new char[4]{'M', 'e', 'o', 'w'}, weight){}
+Cat::Cat(): Animal(1){
+}
+Cat::Cat(int weight): Animal(weight){}
 
-char* Cat::rargh(){
-    return Animal::rargh();
+char* Cat::rargh() const{
+    return sound;
 }
 
-float Cat::jump(){
+float Cat::jump() const{
     int* weight = Animal::get_weight();
 
     if (weight == nullptr)
@@ -43,19 +37,26 @@ float Cat::jump(){
     return (*weight) * 2;
 }
 
-
-Dog::Dog(): Animal(new char[4]{'B', 'a', 'r', 'k'}, new int(5)){}
-Dog::Dog(int* weight): Animal(new char[4]{'B', 'a', 'r', 'k'}, weight){}
-
-char* Dog::rargh(){
-    return Animal::rargh();
+Cat::~Cat(){
+    delete[] sound;
 }
 
-float Dog::jump(){
+Dog::Dog(): Animal(5){}
+Dog::Dog(int weight): Animal(weight){}
+
+char* Dog::rargh() const{
+    return sound;
+}
+
+float Dog::jump() const{
     int* weight = Animal::get_weight();
 
     if (weight == nullptr)
         return 0;
 
     return std::log(*weight);
+}
+
+Dog::~Dog(){
+    delete[] sound;
 }
