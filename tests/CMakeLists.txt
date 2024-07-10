@@ -1,27 +1,30 @@
-add_subdirectory(
-	tests
-)
-
-include_directories(
-	tests
-)
-
-add_executable(
-    tests_cpp
-    main.cpp
+if(${CMAKE_WITH_TESTS} MATCHES "ON")
+  add_subdirectory(
+    tests
   )
 
-target_link_libraries(
-    tests_cpp
-    GTest::gtest_main
-    vector
-    unique_ptr
-    shared_ptr
-    animals
-    parser
-    pugixml
-    json
+  include_directories(
+    tests
   )
 
-include(GoogleTest)
-gtest_discover_tests(tests_cpp)
+  add_executable(
+      tests_cpp
+      main.cpp
+    )
+
+  target_link_libraries(
+      tests_cpp
+      GTest::gtest_main
+      vector
+      unique_ptr
+      shared_ptr
+      animals
+      parser
+      pugixml
+      json
+    )
+
+  include(GoogleTest)
+  gtest_discover_tests(tests_cpp)
+
+endif()

@@ -1,5 +1,0 @@
-if(EXISTS "/home/sfleur/lib/build/tests/tests_cpp[1]_tests.cmake")
-  include("/home/sfleur/lib/build/tests/tests_cpp[1]_tests.cmake")
-else()
-  add_test(tests_cpp_NOT_BUILT tests_cpp_NOT_BUILT)
-endif()
