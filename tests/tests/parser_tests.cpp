@@ -22,7 +22,7 @@ namespace Tests{
     }
 
     TEST_F(Parsers, XMLParsing){
-        ASSERT_NO_THROW(xml.load("data/note.xml"));
+        ASSERT_NO_THROW(xml.load("/home/sfleur/lib/tests/tests/data/note.xml"));
     }
 
     TEST_F(Parsers, JsonParsingtxt){
@@ -38,6 +38,14 @@ namespace Tests{
     }
 
     TEST_F(Parsers, JSONParsingArbitrary){
-        EXPECT_ANY_THROW(xml.load("/home/sfleur/lib/tests/tests/data/x.yzx"));
+        EXPECT_ANY_THROW(jsn.load("/home/sfleur/lib/tests/tests/data/x.yzx"));
+    }
+
+    TEST_F(Parsers, JSONParsingCorrupted){
+        EXPECT_ANY_THROW(jsn.load("/home/sfleur/lib/tests/tests/data/broken.json"));
+    }
+
+    TEST_F(Parsers, XMLParsingCorrupted){
+        EXPECT_ANY_THROW(xml.load("/home/sfleur/lib/tests/tests/data/broken.xml"));
     }
 }

@@ -19,6 +19,9 @@ std::string XMLParser::load(const char* filename){
 
     doc.first_child().print(writer, "");
 
+    if (writer.result == "")
+        throw std::invalid_argument("Corrupted data");
+    
     return writer.result;
 }
 
@@ -30,9 +33,15 @@ std::string JSONParser::load(const char* filename){
         throw std::invalid_argument("Invalid file extension. Expected .json");
 
     std::ifstream f(filename);
+    try{
     nlohmann::json data = nlohmann::json::parse(f);
 
     std::string result = data.dump(2);
-
     return result;
+    }
+    catch(const nlohmann::json_abi_v3_11_3::detail::parse_error& e){
+        throw std::invalid_argument("Corrupted data");
+    }
+
+    return "";
 }
