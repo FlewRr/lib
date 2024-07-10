@@ -20,6 +20,7 @@ target_link_libraries(
     animals
     parser
     pugixml
+    json
   )
 
 include(GoogleTest)

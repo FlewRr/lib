@@ -2,6 +2,7 @@
 #define PARSER_INCLUDE_PARSER_H_20240907
 
 #include "pugixml.hpp"
+#include "json.hpp"
 #include <fstream>
 
 class AbstractParser {
@@ -13,12 +14,21 @@ public:
 };
 
 
-class XMLParser {
+class XMLParser {  
+    struct xml_string_writer: pugi::xml_writer
+    {
+        std::string result;
+
+        virtual void write(const void* data, size_t size)
+        {
+            result.append(static_cast<const char*>(data), size);
+        }
+    };
 public:
     XMLParser() = default;
     ~XMLParser() = default;
 
-    const char* load(const char* filename);
+    std::string load(const char* filename);
 };
 
 
@@ -27,12 +37,6 @@ public:
     JSONParser() = default;
     ~JSONParser() = default;
 
-    // const char* load(const char* filename){
-    //     std::ifstream f(filename);
-
-    //     json data = json::parse(f);
-        
-    //     return data[0];
-    // }
+    std::string load(const char* filename);
 };
 #endif

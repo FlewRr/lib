@@ -20,6 +20,7 @@ add_subdirectory(shared_ptr)
 add_subdirectory(animals)
 add_subdirectory(parser)
 add_subdirectory(pugixml)
+add_subdirectory(nlohmann)
 
 if(${CMAKE_WITH_TESTS} MATCHES "ON")
   add_subdirectory(tests)
