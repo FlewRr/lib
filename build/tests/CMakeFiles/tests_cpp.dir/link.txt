@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/tests_cpp.dir/main.cpp.o -o tests_cpp  ../lib/libgtest_main.a ../vector/libvector.a ../unique_ptr/libunique_ptr.a ../shared_ptr/libshared_ptr.a ../animals/libanimals.a ../parser/libparser.a ../pugixml/src/libpugixml.a ../nlohmann/libjson.a ../lib/libgtest.a
