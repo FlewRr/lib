@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "shared_ptr.h"
-#include "parser.h"
+#include "jsonparser.h"
+#include "xmlparser.h"
 #include <string>
 
 

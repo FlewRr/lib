@@ -1,11 +1,7 @@
-#include "parser.h"
+#include "include/jsonparser.h"
+#include "include/xmlparser.h"
 #include "pugixml.hpp"
 #include <iostream>
-
-const char* AbstractParser::load(const char* filename){
-    return "";
-}
-
 
 std::string XMLParser::load(const char* filename){
     std::string str = filename;
@@ -20,7 +16,7 @@ std::string XMLParser::load(const char* filename){
     doc.first_child().print(writer, "");
 
     if (writer.result == "")
-        throw std::invalid_argument("Corrupted data");
+        throw std::invalid_argument("Internal error has occured");
     
     return writer.result;
 }
@@ -35,7 +31,6 @@ std::string JSONParser::load(const char* filename){
     std::ifstream f(filename);
     try{
     nlohmann::json data = nlohmann::json::parse(f);
-
     std::string result = data.dump(2);
     return result;
     }
@@ -43,5 +38,5 @@ std::string JSONParser::load(const char* filename){
         throw std::invalid_argument("Corrupted data");
     }
 
-    return "";
+    throw std::invalid_argument("Internal error has occured");
 }
