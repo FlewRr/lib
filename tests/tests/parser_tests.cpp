@@ -32,4 +32,12 @@ namespace Tests{
     TEST_F(Parsers, XMLParsingtxt){
         EXPECT_ANY_THROW(xml.load("/home/sfleur/lib/tests/tests/data/doc.txt"));     
     }
+
+    TEST_F(Parsers, XMLParsingArbitrary){
+        EXPECT_ANY_THROW(xml.load("/home/sfleur/lib/tests/tests/data/x.yzx"));
+    }
+
+    TEST_F(Parsers, JSONParsingArbitrary){
+        EXPECT_ANY_THROW(xml.load("/home/sfleur/lib/tests/tests/data/x.yzx"));
+    }
 }
