@@ -24,4 +24,12 @@ namespace Tests{
     TEST_F(Parsers, XMLParsing){
         ASSERT_NO_THROW(xml.load("data/note.xml"));
     }
+
+    TEST_F(Parsers, JsonParsingtxt){
+        EXPECT_ANY_THROW(jsn.load("/home/sfleur/lib/tests/tests/data/doc.txt"));
+    }
+
+    TEST_F(Parsers, XMLParsingtxt){
+        EXPECT_ANY_THROW(xml.load("/home/sfleur/lib/tests/tests/data/doc.txt"));     
+    }
 }
